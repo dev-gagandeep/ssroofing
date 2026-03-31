@@ -30,18 +30,18 @@ function QuoteForm() {
   }
 
   return (
-    <form id="quote-form" className="rounded-[2rem] bg-slate-950 p-8 text-white shadow-soft" onSubmit={handleSubmit}>
+    <form id="quote-form" className="min-w-0 overflow-hidden rounded-[2rem] bg-slate-950 p-6 text-white shadow-soft sm:p-8" onSubmit={handleSubmit}>
       <h3 className="text-2xl font-bold text-white">Request a Free Quote</h3>
       <p className="mt-2 text-slate-300">
         Share a few project details and our team will follow up with suitable next steps.
       </p>
 
-      <div className="mt-6 grid gap-4">
+      <div className="mt-6 grid min-w-0 gap-4">
         <input
           required
           type="text"
           placeholder="Name"
-          className="rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-brand"
+          className="w-full min-w-0 rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-brand"
           value={formData.name}
           onChange={(event) => setFormData({ ...formData, name: event.target.value })}
         />
@@ -49,13 +49,13 @@ function QuoteForm() {
           required
           type="tel"
           placeholder="Phone"
-          className="rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-brand"
+          className="w-full min-w-0 rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-brand"
           value={formData.phone}
           onChange={(event) => setFormData({ ...formData, phone: event.target.value })}
         />
         <select
           required
-          className="rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-brand"
+          className="w-full min-w-0 rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-brand"
           value={formData.serviceType}
           onChange={(event) => setFormData({ ...formData, serviceType: event.target.value })}
         >
@@ -73,7 +73,7 @@ function QuoteForm() {
           required
           rows="5"
           placeholder="Project details"
-          className="rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-brand"
+          className="w-full min-w-0 rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-brand"
           value={formData.projectDetails}
           onChange={(event) => setFormData({ ...formData, projectDetails: event.target.value })}
         />

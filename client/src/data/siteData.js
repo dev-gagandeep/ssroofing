@@ -34,47 +34,122 @@ export const services = [
   {
     title: 'Flat Roofing',
     slug: 'flat-roofing',
+    category: 'Roofing Systems',
     description:
       'Durable flat roofing systems installed for homes, schools, offices, and managed properties with careful detailing around drainage and insulation.',
     benefits: ['Long-lasting membrane systems', 'Energy-efficient performance', 'Minimal disruption during installation'],
     image:
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: 'Pitched Roofing',
     slug: 'pitched-roofing',
+    category: 'Roofing Systems',
     description:
       'Traditional and modern pitched roof installations delivered with attention to weatherproofing, ventilation, and kerb appeal.',
     benefits: ['Tile and slate expertise', 'Improved drainage performance', 'Strong visual finish for residential projects'],
     image:
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: 'Roof Repairs',
     slug: 'roof-repairs',
+    category: 'Repairs & Maintenance',
     description:
       'Responsive repair services for leaks, storm damage, slipped tiles, flashing issues, and ongoing maintenance concerns.',
     benefits: ['Rapid fault diagnosis', 'Targeted cost-effective repairs', 'Prevents more expensive damage'],
     image:
-      'https://images.unsplash.com/photo-1523419409543-6b89f2b4b6be?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: 'Commercial Roofing',
     slug: 'commercial-roofing',
+    category: 'Commercial & Specialist',
     description:
       'Reliable commercial roofing support for warehouses, retail units, offices, and mixed-use developments across the UK.',
     benefits: ['Planned works and reactive support', 'Health and safety conscious delivery', 'Solutions suited to live sites'],
     image:
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: 'Roof Inspections',
     slug: 'roof-inspections',
+    category: 'Repairs & Maintenance',
     description:
       'Professional inspections for property owners, buyers, and facilities teams to identify wear, defects, and lifecycle risks early.',
     benefits: ['Clear condition reporting', 'Helps plan maintenance budgets', 'Supports property due diligence'],
     image:
-      'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Metal Roofing',
+    slug: 'metal-roofing',
+    category: 'Commercial & Specialist',
+    description:
+      'Metal roofing systems specified for commercial and industrial properties where durability, detailing, and weather resistance are essential.',
+    benefits: ['Low-maintenance roof finishes', 'Suitable for industrial environments', 'Strong long-term performance'],
+    image:
+      'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Roof Access & Safety Systems',
+    slug: 'roof-access-safety-systems',
+    category: 'Commercial & Specialist',
+    description:
+      'Support for safe roof access planning, compliant working-at-height considerations, and integrated safety-focused roofing solutions.',
+    benefits: ['Improves maintenance access', 'Supports safer live-site working', 'Practical for commercial properties'],
+    image:
+      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Exterior Cladding',
+    slug: 'exterior-cladding',
+    category: 'Commercial & Specialist',
+    description:
+      'Exterior cladding support to improve envelope performance, visual presentation, and weather protection on commercial properties.',
+    benefits: ['Improved external appearance', 'Envelope protection', 'Suitable for refurbishment projects'],
+    image:
+      'https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Rooflight Replacement',
+    slug: 'rooflight-replacement',
+    category: 'Commercial & Specialist',
+    description:
+      'Rooflight replacement services for ageing or damaged units to improve daylighting, weatherproofing, and roof performance.',
+    benefits: ['Improves natural light', 'Reduces weather ingress risk', 'Supports refurbishment programmes'],
+    image:
+      'https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Environmental Roofing',
+    slug: 'environmental-roofing',
+    category: 'Commercial & Specialist',
+    description:
+      'Environmental roofing solutions designed around thermal performance, drainage considerations, and sustainable building goals.',
+    benefits: ['Supports energy-conscious design', 'Improves roof performance', 'Suitable for modern specifications'],
+    image:
+      'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Flat to Pitched Roof Conversions',
+    slug: 'flat-to-pitched-roof-conversions',
+    category: 'Roofing Systems',
+    description:
+      'Conversion solutions for properties moving from flat to pitched roofing to improve drainage, lifespan, and visual character.',
+    benefits: ['Improves water run-off', 'Enhances kerb appeal', 'Can reduce repeat maintenance issues'],
+    image:
+      'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Guttering & Maintenance',
+    slug: 'guttering-maintenance',
+    category: 'Repairs & Maintenance',
+    description:
+      'Routine guttering, clearance, and preventative maintenance services to keep roofing systems draining effectively throughout the year.',
+    benefits: ['Helps prevent overflow issues', 'Supports roof lifespan', 'Ideal for planned property upkeep'],
+    image:
+      'https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   }
 ];
 
@@ -84,6 +159,31 @@ export const overviewServices = [
   'Roof Repairs',
   'Commercial Roofing',
   'Guttering & Maintenance'
+];
+
+export const serviceMenuGroups = [
+  {
+    title: 'Roofing Systems',
+    description: 'Installation-led services for residential and commercial roofs.',
+    items: ['Flat Roofing', 'Pitched Roofing', 'Flat to Pitched Roof Conversions']
+  },
+  {
+    title: 'Repairs & Maintenance',
+    description: 'Responsive repairs, inspections, and planned maintenance support.',
+    items: ['Roof Repairs', 'Roof Inspections', 'Guttering & Maintenance']
+  },
+  {
+    title: 'Commercial & Specialist',
+    description: 'Broader envelope and specialist works for commercial buildings.',
+    items: [
+      'Commercial Roofing',
+      'Metal Roofing',
+      'Roof Access & Safety Systems',
+      'Exterior Cladding',
+      'Rooflight Replacement',
+      'Environmental Roofing'
+    ]
+  }
 ];
 
 export const whyChooseUs = [

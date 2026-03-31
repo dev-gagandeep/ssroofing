@@ -1,17 +1,17 @@
 import PageHero from '../components/PageHero';
 import SeoSectionHeader from '../components/SeoSectionHeader';
 import ServiceCard from '../components/ServiceCard';
-import { companyDetails, services } from '../data/siteData';
+import { companyDetails, serviceMenuGroups, services } from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 
 function ServicesPage() {
   useSeo({
     title: 'Roofing Services in Hayes & Middlesex | SS Roofing Specialist Limited',
     description:
-      'Explore roofing services from SS Roofing Specialist Limited including flat roofing, pitched roofing, roof repairs, commercial roofing, and inspections in Hayes and surrounding areas.',
+      'Explore roofing services from SS Roofing Specialist Limited including flat roofing, pitched roofing, roof repairs, commercial roofing, cladding, rooflight replacement, inspections, and maintenance in Hayes and surrounding areas.',
     path: '/services',
     keywords:
-      'flat roofing Hayes, pitched roofing Middlesex, roof repairs Hayes, commercial roofing West London, roof inspection Hayes',
+      'flat roofing Hayes, pitched roofing Middlesex, roof repairs Hayes, commercial roofing West London, cladding services Hayes, rooflight replacement Hayes, roof inspection Hayes',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
@@ -38,13 +38,28 @@ function ServicesPage() {
         <div className="container-shell">
           <SeoSectionHeader
             eyebrow="Service Areas"
-            title="Solutions for residential and commercial roofing requirements"
-            description="Each service below is structured to reassure prospective clients, communicate value clearly, and support enquiry conversion."
+            title="A wider roofing and building-envelope service range for SS Roofing"
+            description="The services page now reflects a broader commercial and specialist offer, similar in scope to the reference site, while keeping the SS Roofing visual identity and messaging."
           />
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} {...service} />
-            ))}
+
+          <div className="mt-12 space-y-16">
+            {serviceMenuGroups.map((group) => {
+              const groupServices = services.filter((service) => group.items.includes(service.title));
+
+              return (
+                <section key={group.title}>
+                  <div className="max-w-3xl">
+                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-dark">{group.title}</p>
+                    <h2 className="mt-3 text-3xl font-extrabold text-slate-900">{group.description}</h2>
+                  </div>
+                  <div className="mt-8 grid gap-8 lg:grid-cols-2">
+                    {groupServices.map((service) => (
+                      <ServiceCard key={service.slug} {...service} />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </div>
         </div>
       </section>
