@@ -1,4 +1,6 @@
 import AuthorBox from '../components/AuthorBox';
+import FAQSection from '../components/FAQSection';
+import InternalLinksSection from '../components/InternalLinksSection';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import BlogCard from '../components/BlogCard';
@@ -51,6 +53,20 @@ function ServiceDetailPage() {
 
   const relatedServices = services.filter((entry) => entry.category === service.category && entry.slug !== service.slug).slice(0, 3);
   const relatedPosts = blogPosts.filter((post) => post.relatedServices?.includes(service.title)).slice(0, 2);
+  const serviceFaqs = [
+    {
+      question: `What does ${service.title.toLowerCase()} usually involve?`,
+      answer: `${service.title} is presented on the site as a professional roofing service delivered with a focus on practical detail, suitable materials, and a finish appropriate to the property type and project goals.`
+    },
+    {
+      question: `Is ${service.title.toLowerCase()} available for both residential and commercial properties?`,
+      answer: `The service is positioned to support the property types that are most relevant to it, with the wider site covering residential, commercial, and industrial roofing requirements.`
+    },
+    {
+      question: `How do I enquire about ${service.title.toLowerCase()}?`,
+      answer: `The clearest next step is to use the quote form on the contact page and include a short description of the property, issue, or project scope.`
+    }
+  ];
 
   return (
     <>
@@ -155,6 +171,18 @@ function ServiceDetailPage() {
           </div>
         </section>
       ) : null}
+
+      <FAQSection title={`${service.title} FAQs`} items={serviceFaqs} />
+
+      <InternalLinksSection
+        title="Continue through related pages"
+        links={[
+          { to: '/services', label: 'All Services', text: 'Return to the services overview and compare other roofing options.' },
+          { to: '/projects', label: 'Project Examples', text: 'See the visual project-led side of the site and how services connect to work types.' },
+          { to: '/blog', label: 'Roofing Advice', text: 'Read blog articles that support maintenance, inspections, and service decisions.' },
+          { to: '/contact#quote-form', label: 'Request A Quote', text: 'Move directly into the enquiry flow for this service.' }
+        ]}
+      />
     </>
   );
 }

@@ -1,3 +1,5 @@
+import FAQSection from '../components/FAQSection';
+import InternalLinksSection from '../components/InternalLinksSection';
 import { Link } from 'react-router-dom';
 import AuthorBox from '../components/AuthorBox';
 import BlogCard from '../components/BlogCard';
@@ -58,7 +60,17 @@ function HomePage() {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: companyDetails.legalName,
-        url: companyDetails.websiteUrl
+        url: companyDetails.websiteUrl,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${companyDetails.websiteUrl}/blog?query={search_term_string}`,
+          'query-input': 'required name=search_term_string'
+        }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: `${companyDetails.websiteUrl}/` }]
       },
       {
         '@context': 'https://schema.org',
@@ -84,6 +96,24 @@ function HomePage() {
       }
     ]
   });
+
+  const homeFaqs = [
+    {
+      question: 'What roofing services does SS Roofing Specialist Limited provide in Hayes?',
+      answer:
+        'SS Roofing Specialist Limited provides flat roofing, pitched roofing, roof repairs, commercial roofing, roof inspections, guttering and maintenance, and a wider range of specialist roofing support for properties in Hayes, Middlesex, and surrounding areas.'
+    },
+    {
+      question: 'Do you work on residential and commercial roofing projects?',
+      answer:
+        'Yes. The site is positioned for homeowners, landlords, developers, facilities teams, and commercial property stakeholders who need practical roofing support and clear communication.'
+    },
+    {
+      question: 'Can I request a roofing quote online?',
+      answer:
+        'Yes. The website includes a dedicated quote request form so visitors can submit project details and receive a follow-up from the company.'
+    }
+  ];
 
   const heroRef = useReveal();
 
@@ -364,6 +394,23 @@ function HomePage() {
           <QuoteForm />
         </div>
       </section>
+
+      <FAQSection
+        title="Frequently asked questions about our roofing services"
+        description="Adding visible FAQs helps users get quick answers and improves topical clarity for search engines."
+        items={homeFaqs}
+      />
+
+      <InternalLinksSection
+        title="Explore more key pages on the site"
+        description="These links strengthen internal linking so important service and trust pages are easier for both users and crawlers to discover."
+        links={[
+          { to: '/services', label: 'Roofing Services', text: 'Browse the full range of roofing and specialist envelope services.' },
+          { to: '/about', label: 'About SS Roofing', text: 'Learn more about the company, its local base, and trust positioning.' },
+          { to: '/projects', label: 'Recent Projects', text: 'See representative project examples and portfolio-style case studies.' },
+          { to: '/blog', label: 'Roofing Blog', text: 'Read helpful local roofing advice and maintenance insights.' }
+        ]}
+      />
     </>
   );
 }

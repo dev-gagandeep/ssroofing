@@ -1,3 +1,5 @@
+import FAQSection from '../components/FAQSection';
+import InternalLinksSection from '../components/InternalLinksSection';
 import PageHero from '../components/PageHero';
 import ProjectCard from '../components/ProjectCard';
 import SeoSectionHeader from '../components/SeoSectionHeader';
@@ -11,13 +13,36 @@ function ProjectsPage() {
       'View representative roofing projects from SS Roofing Specialist Limited covering residential, commercial, industrial, and inspection work.',
     path: '/projects',
     keywords: 'roofing projects Hayes, commercial roofing projects Middlesex, roof repair case studies West London',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'CollectionPage',
-      name: `${companyDetails.legalName} Projects`,
-      url: `${companyDetails.websiteUrl}/projects`
-    }
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: `${companyDetails.legalName} Projects`,
+        url: `${companyDetails.websiteUrl}/projects`
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${companyDetails.websiteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Projects', item: `${companyDetails.websiteUrl}/projects` }
+        ]
+      }
+    ]
   });
+
+  const projectFaqs = [
+    {
+      question: 'Why does a projects page help SEO and trust?',
+      answer:
+        'A projects page supports internal linking, visual proof, and service relevance. It helps users understand the kind of work the business is positioned to deliver.'
+    },
+    {
+      question: 'Should project pages use real examples in future?',
+      answer:
+        'Yes. Real project case studies with location, scope, images, and outcomes will be significantly better for both conversions and trust than generic showcase content alone.'
+    }
+  ];
 
   return (
     <>
@@ -42,6 +67,18 @@ function ProjectsPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection title="Projects FAQs" items={projectFaqs} />
+
+      <InternalLinksSection
+        title="Related pages worth exploring"
+        links={[
+          { to: '/services', label: 'Service Pages', text: 'See the roofing services connected to the types of projects shown here.' },
+          { to: '/blog', label: 'Blog Articles', text: 'Read more about repairs, inspections, and maintenance topics.' },
+          { to: '/about', label: 'About The Company', text: 'Understand the trust and positioning behind the business.' },
+          { to: '/contact#quote-form', label: 'Request A Quote', text: 'Use the quote form if you want to discuss a similar project.' }
+        ]}
+      />
     </>
   );
 }

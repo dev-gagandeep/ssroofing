@@ -1,4 +1,6 @@
 import AuthorBox from '../components/AuthorBox';
+import FAQSection from '../components/FAQSection';
+import InternalLinksSection from '../components/InternalLinksSection';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import BlogCard from '../components/BlogCard';
 import PageHero from '../components/PageHero';
@@ -64,6 +66,22 @@ function BlogPostPage() {
   const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
   const relatedPosts = blogPosts.filter((entry) => entry.slug !== post.slug).slice(0, 3);
   const linkedServices = services.filter((service) => post.relatedServices?.includes(service.title));
+  const blogFaqs = [
+    {
+      question: `What is the main takeaway from "${post.title}"?`,
+      answer: post.excerpt
+    },
+    {
+      question: 'How does this article connect to actual roofing services?',
+      answer:
+        'Each article is now internally linked to relevant service pages so users can move from research and information into practical next steps when needed.'
+    },
+    {
+      question: 'Can I request a quote after reading this article?',
+      answer:
+        'Yes. Every article keeps a clear route to the contact and quote flow so informational pages can support conversion as well as search visibility.'
+    }
+  ];
 
   return (
     <>
@@ -192,6 +210,18 @@ function BlogPostPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection title="Article FAQs" items={blogFaqs} />
+
+      <InternalLinksSection
+        title="Useful pages after reading this article"
+        links={[
+          { to: '/services', label: 'Roofing Services', text: 'Explore the full service range related to the issues discussed here.' },
+          { to: '/contact#quote-form', label: 'Request A Quote', text: 'Take the next step if you want advice tailored to your property.' },
+          { to: '/projects', label: 'Project Examples', text: 'Review visual examples of project types and roofing categories.' },
+          { to: '/about', label: 'About SS Roofing', text: 'See more about the company and the trust signals behind the site.' }
+        ]}
+      />
     </>
   );
 }

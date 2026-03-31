@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import FAQSection from '../components/FAQSection';
+import InternalLinksSection from '../components/InternalLinksSection';
 import PageHero from '../components/PageHero';
 import BlogCard from '../components/BlogCard';
 import SeoSectionHeader from '../components/SeoSectionHeader';
@@ -13,18 +15,41 @@ function BlogPage() {
     path: '/blog',
     keywords:
       'roofing blog Hayes, roof repair advice Hayes, flat roof maintenance West London, roofing company Middlesex blog',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'Blog',
-      name: `${companyDetails.legalName} Blog`,
-      url: `${companyDetails.websiteUrl}/blog`,
-      publisher: {
-        '@type': 'Organization',
-        name: companyDetails.legalName,
-        url: companyDetails.websiteUrl
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: `${companyDetails.legalName} Blog`,
+        url: `${companyDetails.websiteUrl}/blog`,
+        publisher: {
+          '@type': 'Organization',
+          name: companyDetails.legalName,
+          url: companyDetails.websiteUrl
+        }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${companyDetails.websiteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${companyDetails.websiteUrl}/blog` }
+        ]
       }
-    }
+    ]
   });
+
+  const blogFaqs = [
+    {
+      question: 'Why does the roofing blog matter for SEO?',
+      answer:
+        'The blog helps the site target informational searches, answer common roofing questions, and support topical authority around repairs, maintenance, and inspections.'
+    },
+    {
+      question: 'Do blog posts link to relevant service pages?',
+      answer:
+        'Yes. Blog posts are now connected to related services so users can move from information to enquiry more easily and crawlers can better understand topical relationships.'
+    }
+  ];
 
   return (
     <>
@@ -64,6 +89,18 @@ function BlogPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection title="Blog FAQs" items={blogFaqs} />
+
+      <InternalLinksSection
+        title="Useful routes from the blog"
+        links={[
+          { to: '/services', label: 'All Services', text: 'Jump from informational content into the full service range.' },
+          { to: '/contact#quote-form', label: 'Request A Quote', text: 'Move from research into direct enquiry when you are ready.' },
+          { to: '/about', label: 'About The Business', text: 'Learn more about the company behind the published advice.' },
+          { to: '/projects', label: 'View Projects', text: 'See project examples that support the services discussed in articles.' }
+        ]}
+      />
     </>
   );
 }

@@ -1,3 +1,5 @@
+import FAQSection from '../components/FAQSection';
+import InternalLinksSection from '../components/InternalLinksSection';
 import PageHero from '../components/PageHero';
 import SeoSectionHeader from '../components/SeoSectionHeader';
 import TrustPanel from '../components/TrustPanel';
@@ -11,13 +13,63 @@ function AboutPage() {
       'Learn about SS Roofing Specialist Limited, a roofing company based in Hayes, Middlesex, serving residential and commercial clients with a professional approach.',
     path: '/about',
     keywords: 'about roofing company Hayes, roofer Middlesex, commercial roofer Hayes, residential roofer West London',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'AboutPage',
-      name: `About ${companyDetails.legalName}`,
-      url: `${companyDetails.websiteUrl}/about`
-    }
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: `About ${companyDetails.legalName}`,
+        url: `${companyDetails.websiteUrl}/about`
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${companyDetails.websiteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'About', item: `${companyDetails.websiteUrl}/about` }
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Where is SS Roofing Specialist Limited based?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'SS Roofing Specialist Limited is based in Hayes, Middlesex, and the website is positioned to support local and nearby roofing enquiries.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'What kind of projects does the company support?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'The business is presented for residential, commercial, and industrial roofing support including repairs, planned works, maintenance, and specialist roofing services.'
+            }
+          }
+        ]
+      }
+    ]
   });
+
+  const aboutFaqs = [
+    {
+      question: 'Why does the About page matter for SEO and trust?',
+      answer:
+        'A strong About page helps users and search engines understand who is behind the website, where the company is based, and why the business can be trusted.'
+    },
+    {
+      question: 'Is SS Roofing Specialist Limited presented as a UK company?',
+      answer:
+        'Yes. The site presents the business as a UK registered private limited company with a clear local base in Hayes, Middlesex.'
+    },
+    {
+      question: 'Does this page help local ranking signals?',
+      answer:
+        'Yes. The About page supports local trust by reinforcing the company identity, location, service focus, and business purpose.'
+    }
+  ];
 
   return (
     <>
@@ -93,6 +145,18 @@ function AboutPage() {
           <TrustPanel items={trustSignals} title="Key trust signals across the SS Roofing website" />
         </div>
       </section>
+
+      <FAQSection title="About Page FAQs" items={aboutFaqs} />
+
+      <InternalLinksSection
+        title="Helpful pages to visit next"
+        links={[
+          { to: '/services', label: 'Our Services', text: 'Explore the full roofing service range and specialist support.' },
+          { to: '/projects', label: 'Project Examples', text: 'See the style of roofing projects the site is built to showcase.' },
+          { to: '/blog', label: 'Roofing Advice', text: 'Read informational content linked to common customer questions.' },
+          { to: '/contact#quote-form', label: 'Request A Quote', text: 'Take the next step if you want help with a project or repair.' }
+        ]}
+      />
     </>
   );
 }

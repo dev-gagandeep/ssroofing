@@ -1,3 +1,5 @@
+import FAQSection from '../components/FAQSection';
+import InternalLinksSection from '../components/InternalLinksSection';
 import PageHero from '../components/PageHero';
 import SeoSectionHeader from '../components/SeoSectionHeader';
 import ServiceCard from '../components/ServiceCard';
@@ -12,18 +14,68 @@ function ServicesPage() {
     path: '/services',
     keywords:
       'flat roofing Hayes, pitched roofing Middlesex, roof repairs Hayes, commercial roofing West London, cladding services Hayes, rooflight replacement Hayes, roof inspection Hayes',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      itemListElement: services.map((service, index) => ({
-        '@type': 'Service',
-        position: index + 1,
-        name: service.title,
-        provider: companyDetails.legalName,
-        areaServed: 'Hayes, Middlesex, West London'
-      }))
-    }
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: services.map((service, index) => ({
+          '@type': 'Service',
+          position: index + 1,
+          name: service.title,
+          provider: companyDetails.legalName,
+          areaServed: 'Hayes, Middlesex, West London'
+        }))
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${companyDetails.websiteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Services', item: `${companyDetails.websiteUrl}/services` }
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What roofing services are offered by SS Roofing Specialist Limited?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'The services page covers flat roofing, pitched roofing, repairs, inspections, commercial roofing, cladding-related support, rooflight replacement, maintenance, and specialist envelope works.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do these services cover both residential and commercial properties?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. The service range is presented for residential, commercial, and industrial property requirements depending on the service type.'
+            }
+          }
+        ]
+      }
+    ]
   });
+
+  const serviceFaqs = [
+    {
+      question: 'Do you provide roofing services for both homes and commercial buildings?',
+      answer:
+        'Yes. The services are structured to support homeowners, landlords, developers, facilities teams, and commercial property managers depending on the project type.'
+    },
+    {
+      question: 'Can I click through to a dedicated page for each service?',
+      answer:
+        'Yes. Each main roofing service now has its own dedicated page, which helps with internal linking, user navigation, and search targeting.'
+    },
+    {
+      question: 'How should I choose the right roofing service for my property?',
+      answer:
+        'If you are unsure whether you need repairs, maintenance, inspection, or replacement, the best starting point is to request a quote and describe the issue or project goals.'
+    }
+  ];
 
   return (
     <>
@@ -63,6 +115,22 @@ function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection
+        title="Service FAQs"
+        description="This section helps visitors quickly understand the service structure and gives search engines more contextual information about the page."
+        items={serviceFaqs}
+      />
+
+      <InternalLinksSection
+        title="Continue exploring the site"
+        links={[
+          { to: '/projects', label: 'View Projects', text: 'See representative work and project-led content.' },
+          { to: '/contact#quote-form', label: 'Request A Quote', text: 'Submit project details and ask for the right next step.' },
+          { to: '/blog', label: 'Read Roofing Advice', text: 'Explore articles linked to inspections, repairs, and maintenance.' },
+          { to: '/about', label: 'Why Trust Us', text: 'See the business positioning and trust-focused content.' }
+        ]}
+      />
     </>
   );
 }
