@@ -45,36 +45,38 @@ function Header() {
                 </button>
 
                 {isServicesOpen ? (
-                  <div className="absolute left-1/2 top-full z-50 mt-5 w-[min(72rem,calc(100vw-3rem))] -translate-x-1/2 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-soft">
-                    <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr_1fr_1fr]">
-                      <div className="rounded-[1.5rem] bg-slate-950 p-7 text-white">
-                        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-light">All Services</p>
-                        <h3 className="mt-4 text-3xl font-bold text-white">Roofing support for domestic, commercial, and specialist projects.</h3>
-                        <p className="mt-4 leading-7 text-slate-300">
-                          Explore the full SS Roofing offering, from core repairs and installations to specialist roofing and envelope works.
-                        </p>
-                        <Link to="/services" className="secondary-btn mt-6 border-white text-white hover:bg-white hover:text-slate-950">
-                          View All Services
-                        </Link>
-                      </div>
-
-                      {serviceMenuGroups.map((group) => (
-                        <div key={group.title}>
-                          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-dark">{group.title}</p>
-                          <p className="mt-3 text-sm leading-6 text-slate-500">{group.description}</p>
-                          <div className="mt-5 space-y-3">
-                            {group.items.map((item) => (
-                              <Link
-                                key={item}
-                                to={`/services#${serviceSlugByTitle[item]}`}
-                                className="block text-sm font-medium text-slate-700 transition hover:text-brand"
-                              >
-                                {item}
-                              </Link>
-                            ))}
-                          </div>
+                  <div className="absolute left-1/2 top-full z-50 w-[min(72rem,calc(100vw-3rem))] -translate-x-1/2 pt-5">
+                    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-soft">
+                      <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr_1fr_1fr]">
+                        <div className="rounded-[1.5rem] bg-slate-950 p-7 text-white">
+                          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-light">All Services</p>
+                          <h3 className="mt-4 text-3xl font-bold text-white">Roofing support for domestic, commercial, and specialist projects.</h3>
+                          <p className="mt-4 leading-7 text-slate-300">
+                            Explore the full SS Roofing offering, from core repairs and installations to specialist roofing and envelope works.
+                          </p>
+                          <Link to="/services" className="secondary-btn mt-6 border-white text-white hover:bg-white hover:text-slate-950">
+                            View All Services
+                          </Link>
                         </div>
-                      ))}
+
+                        {serviceMenuGroups.map((group) => (
+                          <div key={group.title}>
+                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-dark">{group.title}</p>
+                            <p className="mt-3 text-sm leading-6 text-slate-500">{group.description}</p>
+                            <div className="mt-5 space-y-3">
+                              {group.items.map((item) => (
+                                <Link
+                                  key={item}
+                                  to={`/services#${serviceSlugByTitle[item]}`}
+                                  className="block text-sm font-medium text-slate-700 transition hover:text-brand"
+                                >
+                                  {item}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ) : null}
