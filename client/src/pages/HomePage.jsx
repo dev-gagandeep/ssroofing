@@ -1,10 +1,25 @@
 import { Link } from 'react-router-dom';
+import AuthorBox from '../components/AuthorBox';
 import BlogCard from '../components/BlogCard';
 import ProjectCarousel from '../components/ProjectCarousel';
 import SeoSectionHeader from '../components/SeoSectionHeader';
 import TestimonialSlider from '../components/TestimonialSlider';
+import TrustPanel from '../components/TrustPanel';
 import QuoteForm from '../components/QuoteForm';
-import { blogPosts, companyDetails, industries, localAreas, overviewServices, projects, services, testimonials, whyChooseUs } from '../data/siteData';
+import {
+  accreditationHighlights,
+  blogPosts,
+  companyDetails,
+  contentAuthors,
+  industries,
+  localAreas,
+  overviewServices,
+  projects,
+  services,
+  testimonials,
+  trustSignals,
+  whyChooseUs
+} from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 import useReveal from '../hooks/useReveal';
 
@@ -16,28 +31,58 @@ function HomePage() {
     path: '/',
     keywords:
       'roofing company Hayes, roof repairs Hayes, flat roofing Middlesex, commercial roofing West London, roofer UB3',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'RoofingContractor',
-      name: companyDetails.legalName,
-      url: companyDetails.websiteUrl,
-      telephone: companyDetails.contactPhone,
-      email: companyDetails.enquiryEmail,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: '123A Central Avenue',
-        addressLocality: 'Hayes',
-        addressRegion: 'Middlesex',
-        postalCode: 'UB3 2BS',
-        addressCountry: 'GB'
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'RoofingContractor',
+        name: companyDetails.legalName,
+        url: companyDetails.websiteUrl,
+        telephone: companyDetails.contactPhone,
+        email: companyDetails.enquiryEmail,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '123A Central Avenue',
+          addressLocality: 'Hayes',
+          addressRegion: 'Middlesex',
+          postalCode: 'UB3 2BS',
+          addressCountry: 'GB'
+        },
+        areaServed: localAreas.map((area) => ({
+          '@type': 'City',
+          name: area
+        })),
+        serviceType: overviewServices,
+        image: `${companyDetails.websiteUrl}/ss-roofing-logo-colour.png`
       },
-      areaServed: localAreas.map((area) => ({
-        '@type': 'City',
-        name: area
-      })),
-      serviceType: overviewServices,
-      image: `${companyDetails.websiteUrl}/ss-roofing-logo-colour.png`
-    }
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: companyDetails.legalName,
+        url: companyDetails.websiteUrl
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Do you handle both emergency roof repairs and planned roofing works?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. SS Roofing Specialist Limited supports urgent roof repairs as well as planned installations, inspections, and maintenance-led roofing projects.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do you work on residential and commercial properties?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. The company is positioned to support homeowners, landlords, developers, and commercial property managers across multiple roofing service types.'
+            }
+          }
+        ]
+      }
+    ]
   });
 
   const heroRef = useReveal();
@@ -179,6 +224,29 @@ function HomePage() {
                 <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding">
+        <div className="container-shell grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-start">
+          <TrustPanel items={trustSignals} />
+          <div className="grid gap-6">
+            <div className="card-surface">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-dark">Trust Signals</p>
+              <h3 className="mt-4 text-3xl font-bold text-slate-900">Important E-E-A-T gaps this site is now addressing</h3>
+              <div className="mt-6 grid gap-3">
+                {accreditationHighlights.map((item) => (
+                  <div key={item} className="rounded-[1.25rem] bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 leading-7 text-slate-600">
+                For public launch, this section will be even stronger once real accreditations, insurance wording, company registration details, and genuine project evidence are added.
+              </p>
+            </div>
+            <AuthorBox author={contentAuthors[0]} />
           </div>
         </div>
       </section>

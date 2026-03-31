@@ -1,6 +1,6 @@
 import PageHero from '../components/PageHero';
 import QuoteForm from '../components/QuoteForm';
-import { companyDetails } from '../data/siteData';
+import { accreditationHighlights, companyDetails } from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 
 function ContactPage() {
@@ -36,6 +36,13 @@ function ContactPage() {
                 <p>Phone: 0800 123 4567</p>
                 <p>Email: {companyDetails.enquiryEmail}</p>
                 <p>Address: 123A, Central Avenue, Hayes, Middlesex, UB3 2BS, United Kingdom</p>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {accreditationHighlights.map((item) => (
+                  <span key={item} className="rounded-full bg-brand-light px-4 py-2 text-sm font-semibold text-brand-dark">
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

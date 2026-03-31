@@ -1,6 +1,7 @@
 import PageHero from '../components/PageHero';
 import SeoSectionHeader from '../components/SeoSectionHeader';
-import { companyDetails } from '../data/siteData';
+import TrustPanel from '../components/TrustPanel';
+import { companyDetails, trustSignals } from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 
 function AboutPage() {
@@ -77,6 +78,19 @@ function AboutPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 section-padding">
+        <div className="container-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <SeoSectionHeader
+              eyebrow="Trust"
+              title="Why this page supports stronger E-E-A-T"
+              description="About pages are one of the clearest places to reinforce who is behind the business, where the company is based, and why someone should feel comfortable making contact."
+            />
+          </div>
+          <TrustPanel items={trustSignals} title="Key trust signals across the SS Roofing website" />
         </div>
       </section>
     </>

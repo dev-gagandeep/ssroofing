@@ -1,7 +1,8 @@
+import AuthorBox from '../components/AuthorBox';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import BlogCard from '../components/BlogCard';
-import { blogPosts, companyDetails, services } from '../data/siteData';
+import { blogPosts, companyDetails, contentAuthors, services } from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 
 function ServiceDetailPage() {
@@ -17,19 +18,30 @@ function ServiceDetailPage() {
       ? `${service.title} Hayes, ${service.title} Middlesex, ${service.category}, roofing contractor Hayes`
       : 'roofing services Hayes',
     structuredData: service
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          name: service.title,
-          description: service.description,
-          provider: {
-            '@type': 'RoofingContractor',
-            name: companyDetails.legalName,
-            url: companyDetails.websiteUrl
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: service.title,
+            description: service.description,
+            provider: {
+              '@type': 'RoofingContractor',
+              name: companyDetails.legalName,
+              url: companyDetails.websiteUrl
+            },
+            areaServed: 'Hayes, Middlesex, West London',
+            serviceType: service.category
           },
-          areaServed: 'Hayes, Middlesex, West London',
-          serviceType: service.category
-        }
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `${companyDetails.websiteUrl}/` },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: `${companyDetails.websiteUrl}/services` },
+              { '@type': 'ListItem', position: 3, name: service.title, item: `${companyDetails.websiteUrl}/services/${service.slug}` }
+            ]
+          }
+        ]
       : undefined
   });
 
@@ -73,6 +85,8 @@ function ServiceDetailPage() {
                 </div>
               ))}
             </div>
+
+            <AuthorBox author={contentAuthors[0]} />
           </div>
 
           <div className="space-y-6">

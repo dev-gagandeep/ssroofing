@@ -19,6 +19,69 @@ export const companyDetails = {
   websiteUrl: 'https://www.ssroofingspecialist.co.uk'
 };
 
+export const trustSignals = [
+  {
+    title: 'Locally Based in Hayes',
+    text: 'A visible operating base in Hayes, Middlesex helps support local trust, faster communication, and stronger local search relevance.'
+  },
+  {
+    title: 'Residential and Commercial Focus',
+    text: 'The site clearly serves homeowners, landlords, facilities teams, and commercial property stakeholders across multiple project types.'
+  },
+  {
+    title: 'Safety and Quality-Led Delivery',
+    text: 'Messaging across the site reinforces safe working practices, dependable materials, and careful project coordination.'
+  },
+  {
+    title: 'Quote and Enquiry Transparency',
+    text: 'Dedicated service pages, internal linking, and clear enquiry routes reduce friction and improve confidence before contact.'
+  }
+];
+
+export const accreditationHighlights = [
+  'Fully insured roofing contractor',
+  'Quality-led roofing systems',
+  'Responsive maintenance support',
+  'Trusted residential and commercial service'
+];
+
+export const contentAuthors = [
+  {
+    name: 'SS Roofing Specialist Editorial Team',
+    role: 'Service content and roofing guidance',
+    bio: 'This content is prepared to help homeowners, landlords, and commercial property teams understand roofing options, maintenance issues, and practical next steps before requesting a quote.',
+    expertise: ['Residential roofing', 'Commercial roofing', 'Roof inspections', 'Planned maintenance']
+  }
+];
+
+export const keywordStrategy = [
+  {
+    cluster: 'Primary local commercial intent',
+    targetPage: '/',
+    keywords: ['roofing company Hayes', 'roofer Hayes', 'roofing contractor Hayes Middlesex', 'roof repairs Hayes']
+  },
+  {
+    cluster: 'Core service intent',
+    targetPage: '/services',
+    keywords: ['flat roofing Hayes', 'pitched roofing Middlesex', 'commercial roofing West London', 'roof inspections Hayes']
+  },
+  {
+    cluster: 'Service detail intent',
+    targetPage: '/services/:slug',
+    keywords: ['service + Hayes', 'service + Middlesex', 'service + West London', 'commercial roofing service + local area']
+  },
+  {
+    cluster: 'Informational blog intent',
+    targetPage: '/blog and /blog/:slug',
+    keywords: ['roof repair advice Hayes', 'flat roof maintenance West London', 'roof inspection signs Hayes', 'guttering maintenance Middlesex']
+  },
+  {
+    cluster: 'Trust and brand intent',
+    targetPage: '/about and /contact',
+    keywords: ['about roofing company Hayes', 'contact roofer Hayes', 'roofing company UB3', 'roofing quote Hayes']
+  }
+];
+
 export const localAreas = [
   'Hayes',
   'Middlesex',

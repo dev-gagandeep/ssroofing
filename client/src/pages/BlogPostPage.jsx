@@ -1,7 +1,8 @@
+import AuthorBox from '../components/AuthorBox';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import BlogCard from '../components/BlogCard';
 import PageHero from '../components/PageHero';
-import { blogPosts, companyDetails, services } from '../data/siteData';
+import { blogPosts, companyDetails, contentAuthors, services } from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 
 function BlogPostPage() {
@@ -17,29 +18,40 @@ function BlogPostPage() {
       ? `${post.category}, roofing advice Hayes, roofing company Hayes Middlesex, ${post.title.toLowerCase()}`
       : 'roofing blog Hayes, roofing advice Middlesex',
     structuredData: post
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: post.title,
-          description: post.excerpt,
-          image: [post.image],
-          datePublished: post.datePublished,
-          dateModified: post.datePublished,
-          author: {
-            '@type': 'Organization',
-            name: post.author
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            image: [post.image],
+            datePublished: post.datePublished,
+            dateModified: post.datePublished,
+            author: {
+              '@type': 'Organization',
+              name: post.author
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: companyDetails.legalName,
+              url: companyDetails.websiteUrl,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${companyDetails.websiteUrl}/ss-roofing-logo-colour.png`
+              }
+            },
+            mainEntityOfPage: `${companyDetails.websiteUrl}/blog/${post.slug}`
           },
-          publisher: {
-            '@type': 'Organization',
-            name: companyDetails.legalName,
-            url: companyDetails.websiteUrl,
-            logo: {
-              '@type': 'ImageObject',
-              url: `${companyDetails.websiteUrl}/ss-roofing-logo-colour.png`
-            }
-          },
-          mainEntityOfPage: `${companyDetails.websiteUrl}/blog/${post.slug}`
-        }
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `${companyDetails.websiteUrl}/` },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: `${companyDetails.websiteUrl}/blog` },
+              { '@type': 'ListItem', position: 3, name: post.title, item: `${companyDetails.websiteUrl}/blog/${post.slug}` }
+            ]
+          }
+        ]
       : undefined
   });
 
@@ -89,6 +101,10 @@ function BlogPostPage() {
               </div>
             </div>
           ) : null}
+
+          <div className="mt-8">
+            <AuthorBox author={contentAuthors[0]} />
+          </div>
 
           <div className="mt-10 space-y-10">
             {post.content.map((section, index) => (

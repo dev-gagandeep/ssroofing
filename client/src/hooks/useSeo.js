@@ -63,7 +63,7 @@ function useSeo({
         scriptElement.setAttribute('data-seo-schema', 'true');
         document.head.appendChild(scriptElement);
       }
-      scriptElement.textContent = JSON.stringify(structuredData);
+      scriptElement.textContent = JSON.stringify(Array.isArray(structuredData) ? structuredData : structuredData);
     } else if (scriptElement) {
       scriptElement.remove();
     }
