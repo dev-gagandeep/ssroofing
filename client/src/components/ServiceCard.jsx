@@ -20,9 +20,14 @@ function ServiceCard({ title, description, image, benefits, slug }) {
             <li key={benefit}>• {benefit}</li>
           ))}
         </ul>
-        <Link to="/contact#quote-form" className="primary-btn mt-6">
-          Request Service Quote
-        </Link>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link to={`/services/${slug}`} className="secondary-btn">
+            View Service Page
+          </Link>
+          <Link to="/contact#quote-form" className="primary-btn">
+            Request Quote
+          </Link>
+        </div>
       </div>
     </article>
   );

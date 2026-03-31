@@ -208,15 +208,21 @@ export const whyChooseUs = [
 export const industries = [
   {
     title: 'Residential',
-    text: 'Roofing services for homeowners, landlords, and developers requiring dependable craftsmanship and a tidy finish.'
+    text: 'Roofing services for homeowners, landlords, and developers requiring dependable craftsmanship and a tidy finish.',
+    image:
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: 'Commercial',
-    text: 'Tailored roofing support for offices, retail units, schools, hospitality sites, and multi-property portfolios.'
+    text: 'Tailored roofing support for offices, retail units, schools, hospitality sites, and multi-property portfolios.',
+    image:
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   },
   {
     title: 'Industrial',
-    text: 'Practical solutions for industrial buildings where safety, durability, and programme control are essential.'
+    text: 'Practical solutions for industrial buildings where safety, durability, and programme control are essential.',
+    image:
+      'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
   }
 ];
 
@@ -286,6 +292,11 @@ export const blogPosts = [
     datePublished: '2026-03-31',
     author: 'SS Roofing Specialist Limited',
     category: 'Residential Roofing',
+    relatedServices: ['Roof Repairs', 'Pitched Roofing', 'Flat to Pitched Roof Conversions'],
+    gallery: [
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80'
+    ],
     image:
       'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1400&q=80',
     content: [
@@ -320,6 +331,11 @@ export const blogPosts = [
     datePublished: '2026-03-31',
     author: 'SS Roofing Specialist Limited',
     category: 'Commercial Roofing',
+    relatedServices: ['Commercial Roofing', 'Flat Roofing', 'Guttering & Maintenance'],
+    gallery: [
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80'
+    ],
     image:
       'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80',
     content: [
@@ -354,6 +370,11 @@ export const blogPosts = [
     datePublished: '2026-03-31',
     author: 'SS Roofing Specialist Limited',
     category: 'Roof Inspections',
+    relatedServices: ['Roof Inspections', 'Roof Repairs', 'Guttering & Maintenance'],
+    gallery: [
+      'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80'
+    ],
     image:
       'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1400&q=80',
     content: [
@@ -388,6 +409,11 @@ export const blogPosts = [
     datePublished: '2026-03-31',
     author: 'SS Roofing Specialist Limited',
     category: 'Guttering & Maintenance',
+    relatedServices: ['Guttering & Maintenance', 'Roof Repairs', 'Commercial Roofing'],
+    gallery: [
+      'https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80'
+    ],
     image:
       'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1400&q=80',
     content: [

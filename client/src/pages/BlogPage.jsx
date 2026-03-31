@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import BlogCard from '../components/BlogCard';
 import SeoSectionHeader from '../components/SeoSectionHeader';
@@ -41,6 +42,21 @@ function BlogPage() {
             title="Content designed to support both local rankings and real customer decisions"
             description="These articles strengthen the site’s topical authority around residential roofing, commercial roofing, maintenance, and local roofing advice in Hayes and the surrounding area."
           />
+          <div className="mt-12 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
+            <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+              <img src={blogPosts[0].image} alt={blogPosts[0].title} className="h-full min-h-[300px] w-full object-cover" />
+              <div className="p-8 lg:p-10">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-dark">Featured Article</p>
+                <h2 className="mt-4 text-4xl font-extrabold text-slate-900">{blogPosts[0].title}</h2>
+                <p className="mt-5 text-lg leading-8 text-slate-600">{blogPosts[0].excerpt}</p>
+                <div className="mt-8">
+                  <Link to={`/blog/${blogPosts[0].slug}`} className="primary-btn">
+                    Read Featured Article
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             {blogPosts.map((post) => (
               <BlogCard key={post.slug} post={post} />

@@ -67,7 +67,7 @@ function Header() {
                               {group.items.map((item) => (
                                 <Link
                                   key={item}
-                                  to={`/services#${serviceSlugByTitle[item]}`}
+                                  to={`/services/${serviceSlugByTitle[item]}`}
                                   className="block text-sm font-medium text-slate-700 transition hover:text-brand"
                                 >
                                   {item}
@@ -132,7 +132,7 @@ function Header() {
                     {services.map((service) => (
                       <Link
                         key={service.slug}
-                        to={`/services#${service.slug}`}
+                        to={`/services/${service.slug}`}
                         onClick={() => setIsOpen(false)}
                         className="text-sm font-medium text-slate-700 transition hover:text-brand"
                       >

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import BlogCard from '../components/BlogCard';
+import ProjectCarousel from '../components/ProjectCarousel';
 import SeoSectionHeader from '../components/SeoSectionHeader';
 import TestimonialSlider from '../components/TestimonialSlider';
 import QuoteForm from '../components/QuoteForm';
-import { blogPosts, companyDetails, industries, localAreas, overviewServices, testimonials, whyChooseUs } from '../data/siteData';
+import { blogPosts, companyDetails, industries, localAreas, overviewServices, projects, services, testimonials, whyChooseUs } from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 import useReveal from '../hooks/useReveal';
 
@@ -85,24 +86,55 @@ function HomePage() {
             </div>
           </div>
         </div>
+
+        <div className="container-shell relative -mt-6 pb-16 lg:-mt-10">
+          <div className="grid gap-4 md:grid-cols-3">
+            {services.slice(0, 3).map((service) => (
+              <Link
+                key={service.slug}
+                to={`/services/${service.slug}`}
+                className="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/10 backdrop-blur transition hover:-translate-y-1"
+              >
+                <div className="relative h-48">
+                  <img src={service.image} alt={service.title} className="h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <p className="text-lg font-semibold text-white">{service.title}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="section-padding">
         <div className="container-shell">
           <SeoSectionHeader
             eyebrow="Services"
-            title="Roofing services tailored to the needs of modern properties"
-            description="We support homeowners, developers, landlords, and commercial clients with roofing services built around quality workmanship and dependable communication."
+            title="A broader service offer shaped for modern UK roofing requirements"
+            description="The homepage now leans more into imagery and service depth, helping the site feel closer to an established commercial roofing brand while staying specific to SS Roofing."
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-            {overviewServices.map((service) => (
-              <div key={service} className="card-surface">
-                <h3 className="text-xl font-bold">{service}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
-                  Practical roofing solutions planned around durability, weather protection, and clean presentation.
-                </p>
-              </div>
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            {services.slice(0, 6).map((service) => (
+              <Link
+                key={service.slug}
+                to={`/services/${service.slug}`}
+                className="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1"
+              >
+                <img src={service.image} alt={service.title} className="h-56 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <div className="p-6">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-dark">{service.category}</p>
+                  <h3 className="mt-3 text-2xl font-bold">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{service.description}</p>
+                </div>
+              </Link>
             ))}
+          </div>
+          <div className="mt-8">
+            <Link to="/services" className="secondary-btn">
+              Explore All Services
+            </Link>
           </div>
         </div>
       </section>
@@ -161,13 +193,26 @@ function HomePage() {
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {industries.map((industry) => (
               <div key={industry.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
-                <div className="h-2 bg-brand" />
+                <img src={industry.image} alt={industry.title} className="h-56 w-full object-cover" />
                 <div className="p-7">
                   <h3 className="text-2xl font-bold">{industry.title}</h3>
                   <p className="mt-4 leading-7 text-slate-600">{industry.text}</p>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 section-padding">
+        <div className="container-shell">
+          <SeoSectionHeader
+            eyebrow="Featured Work"
+            title="A more image-led project section inspired by major UK commercial roofing sites"
+            description="Using stronger project imagery and a rotating showcase makes the homepage feel more established, more visual, and more commercially credible."
+          />
+          <div className="mt-12">
+            <ProjectCarousel items={projects.slice(0, 5)} />
           </div>
         </div>
       </section>

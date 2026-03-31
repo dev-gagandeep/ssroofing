@@ -1,7 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import BlogCard from '../components/BlogCard';
 import PageHero from '../components/PageHero';
-import { blogPosts, companyDetails } from '../data/siteData';
+import { blogPosts, companyDetails, services } from '../data/siteData';
 import useSeo from '../hooks/useSeo';
 
 function BlogPostPage() {
@@ -51,6 +51,7 @@ function BlogPostPage() {
   const previousPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
   const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
   const relatedPosts = blogPosts.filter((entry) => entry.slug !== post.slug).slice(0, 3);
+  const linkedServices = services.filter((service) => post.relatedServices?.includes(service.title));
 
   return (
     <>
@@ -64,16 +65,51 @@ function BlogPostPage() {
       <section className="section-padding">
         <article className="container-shell max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand-dark">{post.datePublished}</p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {post.gallery?.map((image) => (
+              <div key={image} className="overflow-hidden rounded-[1.75rem] border border-slate-200 shadow-soft">
+                <img src={image} alt={post.title} className="h-64 w-full object-cover" />
+              </div>
+            ))}
+          </div>
+
+          {linkedServices.length ? (
+            <div className="mt-8 rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-soft">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-dark">Related Services</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {linkedServices.map((service) => (
+                  <Link
+                    key={service.slug}
+                    to={`/services/${service.slug}`}
+                    className="rounded-full bg-brand-light px-4 py-2 text-sm font-semibold text-brand-dark transition hover:bg-brand hover:text-white"
+                  >
+                    {service.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
           <div className="mt-10 space-y-10">
-            {post.content.map((section) => (
-              <section key={section.heading}>
-                <h2 className="text-3xl font-bold text-slate-900">{section.heading}</h2>
-                <div className="mt-5 space-y-5">
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="text-lg leading-8 text-slate-600">
-                      {paragraph}
-                    </p>
-                  ))}
+            {post.content.map((section, index) => (
+              <section key={section.heading} className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+                <div>
+                  <h2 className="text-3xl font-bold text-slate-900">{section.heading}</h2>
+                  <div className="mt-5 space-y-5">
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="text-lg leading-8 text-slate-600">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 shadow-soft">
+                  <img
+                    src={post.gallery?.[index % (post.gallery?.length || 1)] || post.image}
+                    alt={section.heading}
+                    className="h-72 w-full object-cover"
+                  />
                 </div>
               </section>
             ))}
